@@ -4,24 +4,21 @@ FROM ubuntu:latest
 # Set environment variables
 ENV DEBIAN_FRONTEND=noninteractive
 
-# Update and install basic packages
+# Install Python and pip
 RUN apt-get update && apt-get install -y \
-    build-essential \
-    git \
-    curl \
-    vim \
+    python3 \
+    python3-pip \
     && rm -rf /var/lib/apt/lists/*
 
 # Set the working directory inside the container
 WORKDIR /workspace
 
-# Copy your application's source code from your host to your image
-# COPY . /workspace
+# Copy your Python script and any other necessary files into the container
+COPY . /workspace
 
-# If your app needs to be built:
-# RUN make / ./build_script.sh
+# Install any required Python dependencies
+# Uncomment and modify if you have requirements.txt
+# RUN pip3 install -r requirements.txt
 
-# Specify the command to run on container start
-# CMD ["./your-application"]
-
-
+# Specify the command to run your Python script
+CMD ["python3", "my_script.py"]
