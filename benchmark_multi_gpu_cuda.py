@@ -1,6 +1,7 @@
 import torch
 import torch.nn as nn
 import time
+import os  # Import the os module
 
 def benchmark_specific_gpus(matrix_size, gpu_ids):
     # Check if CUDA is available and determine the number of GPUs
@@ -40,6 +41,5 @@ def benchmark_specific_gpus(matrix_size, gpu_ids):
 
 # Example Usage
 matrix_size = 4096  # You can adjust this based on your GPU's capability
-#gpu_ids = [0, 1, 2, 3]  # Specify the GPU IDs you want to use
-gpu_ids = [1, 2]  # Specify the GPU IDs you want to use
+gpu_ids = [0, 1, 2, 3]  # Specify the GPU IDs you want to use
 benchmark_specific_gpus(matrix_size, gpu_ids)
