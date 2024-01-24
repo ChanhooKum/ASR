@@ -1,24 +1,34 @@
-# Use the latest Ubuntu image as the base
+# Use Ubuntu as the base image
 FROM ubuntu:latest
 
 # Set environment variables
 ENV DEBIAN_FRONTEND=noninteractive
 
-# Install Python and pip
+# Install Python, pip, and Git
 RUN apt-get update && apt-get install -y \
     python3 \
     python3-pip \
+    git \
     && rm -rf /var/lib/apt/lists/*
+
+# Upgrade pip
+RUN pip3 install --upgrade pip
 
 # Set the working directory inside the container
 WORKDIR /workspace
 
-# Copy your Python script and any other necessary files into the container
-COPY . /workspace
+# Clone your Git repository
+RUN git clone https://github.com/ChanhooKum/ASR.git /workspace
 
-# Install any required Python dependencies
-# Uncomment and modify if you have requirements.txt
-# RUN pip3 install -r requirements.txt
+# Install numpy and PyTorch
+# The PyTorch version should be compatible with the system architecture.
+# Use the PyTorch website (https://pytorch.org/get-started/locally/) to find the right version.
+RUN pip3 install numpy torch torchvision torchaudio
 
-# Specify the command to run your Python script
-CMD ["python3", "my_script.py"]
+# (Optional) If your repository has a requirements.txt file for Python dependencies, install them
+# Uncomment and modify the following lines if you have a requirements.txt file
+# COPY requirements.txt /workspace/
+# RUN pip3 install -r /workspace/requirements.txt
+
+# Start a bash shell by default so you can interactively run commands
+CMD ["/bin/bash"]
