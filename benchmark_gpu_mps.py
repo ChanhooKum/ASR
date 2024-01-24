@@ -33,5 +33,5 @@ def benchmark_mps(matrix_size):
     print(f"Time taken for matrix size {matrix_size}: {end_time - start_time} seconds")
 
 # Example Usage
-matrix_size = 4096  # Adjust based on your device's capability
+matrix_size = 8192  # Adjust based on your device's capability
 benchmark_mps(matrix_size)
