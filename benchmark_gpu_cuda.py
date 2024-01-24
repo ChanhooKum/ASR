@@ -27,7 +27,7 @@ def benchmark_gpu(gpu_id, matrix_size):
     print(f"Time taken for matrix size {matrix_size}: {end_time - start_time} seconds")
 
 # Example Usage
-gpu_id = 2  # Change based on your GPU ID
+gpu_id = 3  # Change based on your GPU ID
 matrix_size = 4096  # You can adjust this based on your GPU's capability
 
 benchmark_gpu(gpu_id, matrix_size)
