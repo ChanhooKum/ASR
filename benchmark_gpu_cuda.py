@@ -28,6 +28,6 @@ def benchmark_gpu(gpu_id, matrix_size):
 
 # Example Usage
 gpu_id = 1  # Change based on your GPU ID
-matrix_size = 4096  # You can adjust this based on your GPU's capability
+matrix_size = 8192  # You can adjust this based on your GPU's capability
 
 benchmark_gpu(gpu_id, matrix_size)
